@@ -1,0 +1,48 @@
+# Środowisko conda dla projektu Praca_INZ (detekcja deepfake audio)
+#
+# Utworzenie:
+#   conda env create -f environment.yml
+#   conda activate inz-torch
+#
+# UWAGA: torch / torchaudio NIE są tu przypięte z CUDA — po utworzeniu
+# środowiska zainstaluj je ręcznie z wariantem CUDA pasującym do GPU:
+#   pip install torch==2.9.1 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
+#   (zob. https://pytorch.org/get-started/locally/)
+
+name: inz-torch
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11.14
+
+  # --- Audio / GUI z conda-forge (binaria systemowe) ---
+  - ffmpeg=7.1           # enkoder libopus — symulacja kodeka HD Voice
+  - pyqt=6.11.0
+  - pyqtgraph=0.14.0
+  - python-sounddevice=0.5.5
+
+  # --- Reszta przez pip (zgodnie z requirements.txt) ---
+  - pip
+  - pip:
+      # Deep learning / model
+      # torch==2.9.1        # zainstalować ręcznie z wariantem CUDA (patrz wyżej)
+      # torchaudio==2.9.1
+      - transformers==4.57.3
+      - huggingface-hub==0.36.0
+
+      # Przetwarzanie audio
+      - librosa==0.11.0
+      - soundfile==0.13.1
+      - pydub==0.25.1
+
+      # Dane / metryki / obliczenia
+      - numpy==2.4.4
+      - scipy==1.16.0
+      - pandas==2.3.3
+      - scikit-learn==1.7.1
+
+      # Pobieranie / scraping danych (skrypty pomocnicze)
+      - requests==2.32.5
+      - beautifulsoup4==4.14.3

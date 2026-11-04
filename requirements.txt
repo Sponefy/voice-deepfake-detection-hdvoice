@@ -1,0 +1,36 @@
+# Requirements for Praca_INZ project
+# Środowisko: conda env `inz-torch`, Python 3.11.14
+#
+# Instalacja:
+#   pip install -r requirements.txt
+# PyTorch i torchaudio instalować osobno z wariantem CUDA:
+#   https://pytorch.org/get-started/locally/
+#
+# Zależność systemowa (nie pip): FFmpeg 7.1 z enkoderem libopus
+#   — wymagany przez pydub oraz symulację kodeka HD Voice (Opus).
+
+# --- Deep learning / model ---
+# torch==2.9.1            # zainstalowane jako 2.9.1+cu130 (CUDA 13.0)
+# torchaudio==2.9.1
+transformers==4.57.3
+huggingface-hub==0.36.0
+
+# --- Przetwarzanie audio ---
+librosa==0.11.0
+soundfile==0.13.1
+pydub==0.25.1
+
+# --- Dane / metryki / obliczenia ---
+numpy==2.4.4
+scipy==1.16.0
+pandas==2.3.3
+scikit-learn==1.7.1
+
+# --- Nagrywanie / wizualizacja (desktop) ---
+sounddevice==0.5.5
+PyQt6==6.11.0
+pyqtgraph==0.14.0
+
+# --- Pobieranie / scraping danych (skrypty pomocnicze) ---
+requests==2.32.5
+beautifulsoup4==4.14.3
